@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 77552740}
   - component: {fileID: 77552739}
   m_Layer: 5
-  m_Name: Trail
+  m_Name: TrailLengthInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,19 +302,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 336593409}
-        m_TargetAssemblyTypeName: SolarSystem, Assembly-CSharp
-        m_MethodName: SetTrailLength
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -374,7 +362,7 @@ GameObject:
   - component: {fileID: 99018703}
   - component: {fileID: 99018702}
   m_Layer: 5
-  m_Name: Reset
+  m_Name: ResetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,19 +431,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 99018703}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 336593409}
-        m_TargetAssemblyTypeName: SolarSystem, Assembly-CSharp
-        m_MethodName: ResetSimulation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &99018703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,7 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5d7cfeda66dfe4fa0489c686b2da15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetPrefab: {fileID: 8327577101867576359, guid: 826918eaf56297a42b4d9c65af1bb752, type: 3}
+  bodyPrefab: {fileID: 8327577101867576359, guid: 826918eaf56297a42b4d9c65af1bb752, type: 3}
   addButton: {fileID: 435595657}
   pausedText: {fileID: 1409284708}
   trailLengthInput: {fileID: 77552739}
@@ -1947,7 +1923,7 @@ GameObject:
   - component: {fileID: 435595658}
   - component: {fileID: 435595657}
   m_Layer: 5
-  m_Name: AddPlanet
+  m_Name: AddButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2238,7 +2214,7 @@ GameObject:
   - component: {fileID: 575078544}
   - component: {fileID: 575078543}
   m_Layer: 5
-  m_Name: Stop
+  m_Name: StartStopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2307,19 +2283,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575078544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 336593409}
-        m_TargetAssemblyTypeName: SolarSystem, Assembly-CSharp
-        m_MethodName: PauseResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &575078544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3811,7 +3775,7 @@ GameObject:
   - component: {fileID: 1226591678}
   - component: {fileID: 1226591677}
   m_Layer: 5
-  m_Name: ClearTrails
+  m_Name: ClearTrailsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3880,19 +3844,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1226591678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 336593409}
-        m_TargetAssemblyTypeName: SolarSystem, Assembly-CSharp
-        m_MethodName: ClearTrails
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1226591678
 MonoBehaviour:
   m_ObjectHideFlags: 0

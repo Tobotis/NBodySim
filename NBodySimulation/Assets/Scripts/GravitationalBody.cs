@@ -6,64 +6,59 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class GravitationalBody : MonoBehaviour
 {
-    public float radius;
+    
     public float mass;
-    public Vector3 startVelocity;
     public Vector3 velocity;
     public Rigidbody rb;
-    public bool moving = false;
+    private float radius;
+    public bool draggingObject = false;
+    private Simulator sim;
     private void Awake()
-    {
-        Simulator.bodies.Add(this);
+    { 
         rb = GetComponent<Rigidbody>();
+        sim = GameObject.Find("NBodySimulator").GetComponent<Simulator>();
+        sim.bodies.Add(this);
         rb.mass = mass;
-        velocity = startVelocity;
     }
+    // Update the velocity based on all other bodies in space
     public void UpdateVelocity(List<GravitationalBody> bodies, float time)
     {
         foreach(GravitationalBody body in bodies)
         {
             if(body != this)
             {
-                float dist = (body.rb.position - rb.position).sqrMagnitude;
-                Vector3 forceDir = (body.rb.position - rb.position).normalized;
-                Vector3 force = forceDir * Simulator.G * body.mass * mass / dist;
-                Vector3 acceleration =  force/ mass;
+                // F = G * (m1 * m2)/r^2 * r/abs(r)
+                float rSquared = (body.rb.position - rb.position).sqrMagnitude;
+                Vector3 dir = (body.rb.position - rb.position).normalized;
+                Vector3 acceleration = dir * Simulator.G * body.mass  / rSquared; ;
                 velocity += acceleration * time;
             }
         }
     }
-    public void UpdateVelocity(float time)
-    {
-        velocity += velocity * time;
-    }
+    // Update the position of the body according to the updated velocity
     public void UpdatePosition(float time)
     {
-        
-
-            rb.position = rb.position + velocity * time;
+         rb.position = rb.position + velocity * time;
     }
+
     private void Update()
     {
-        if (Simulator.paused && CameraController.focusedIndex != -1)
+        if (Simulator.paused && Simulator.focusedBody != null)
         {
-            if (Simulator.bodies[CameraController.focusedIndex] == this)
+            if (Simulator.focusedBody == this)
             {
                 if (Input.GetKeyDown(KeyCode.G))
                 {
-                    if (moving)
+                    if (draggingObject)
                     {
-
-                        CameraController.xPosInput.text = transform.position.x.ToString();
-                        CameraController.yPosInput.text = transform.position.z.ToString();
-                        moving = false;
+                        draggingObject = false;
                     }
                     else
                     {
-                        moving = true;
+                        draggingObject = true;
                     }
                 }
-                if (moving)
+                if (draggingObject)
                 {
                     float temp = Time.timeScale;
                     TrailRenderer tR = gameObject.GetComponent<TrailRenderer>();
@@ -79,12 +74,12 @@ public class GravitationalBody : MonoBehaviour
             }
             else
             {
-                moving = false;
+                draggingObject = false;
             }
         }
         else
         {
-            moving = false;
+            draggingObject = false;
         }
     }
 
