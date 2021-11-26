@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 public class GravitationalBody : MonoBehaviour
 {
-    
+
     public float mass;
     public Vector3 velocity;
     public Rigidbody rb;
@@ -14,7 +14,7 @@ public class GravitationalBody : MonoBehaviour
     public bool draggingObject = false;
     private Simulator sim;
     private void Awake()
-    { 
+    {
         rb = GetComponent<Rigidbody>();
         sim = GameObject.Find("NBodySimulator").GetComponent<Simulator>();
         sim.bodies.Add(this);
@@ -23,14 +23,15 @@ public class GravitationalBody : MonoBehaviour
     // Update the velocity based on all other bodies in space
     public void UpdateVelocity(List<GravitationalBody> bodies, float time)
     {
-        foreach(GravitationalBody body in bodies)
+        foreach (GravitationalBody body in bodies)
         {
-            if(body != this)
+            if (body != this)
             {
                 // F = G * (m1 * m2)/r^2 * r/abs(r)
                 float rSquared = (body.rb.position - rb.position).sqrMagnitude;
                 Vector3 dir = (body.rb.position - rb.position).normalized;
-                Vector3 acceleration = dir * Simulator.G * body.mass  / rSquared; ;
+                Vector3 acceleration = dir * Simulator.G * body.mass / rSquared;
+                Debug.Log(acceleration);
                 velocity += acceleration * time;
             }
         }
@@ -38,7 +39,7 @@ public class GravitationalBody : MonoBehaviour
     // Update the position of the body according to the updated velocity
     public void UpdatePosition(float time)
     {
-         rb.position = rb.position + velocity * time;
+        rb.position = rb.position + velocity * time;
     }
 
     private void Update()
