@@ -31,7 +31,6 @@ public class GravitationalBody : MonoBehaviour
                 float rSquared = (body.rb.position - rb.position).sqrMagnitude;
                 Vector3 dir = (body.rb.position - rb.position).normalized;
                 Vector3 acceleration = dir * Simulator.G * body.mass / rSquared;
-                Debug.Log(acceleration);
                 velocity += acceleration * time;
             }
         }
@@ -83,7 +82,14 @@ public class GravitationalBody : MonoBehaviour
             draggingObject = false;
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Planet")
+        {
+            UIController.ResetGame();
+        }
 
+    }
 }
 public class BodyData
 {

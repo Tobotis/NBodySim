@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public static event Action OnReset;
-
-    private Simulator simulator;
+    private static Simulator simulator;
 
     private static Button addButton;
     private static Button startStopButton;
@@ -86,7 +84,7 @@ public class UIController : MonoBehaviour
 
     public static void OnFocused(GravitationalBody obj)
     {
-        if(obj != null)
+        if (obj != null)
         {
             deleteButton.gameObject.SetActive(true);
             exitFocusButton.gameObject.SetActive(true);
@@ -111,7 +109,7 @@ public class UIController : MonoBehaviour
             yVInput.gameObject.SetActive(false);
             xPInput.gameObject.SetActive(false);
             yPInput.gameObject.SetActive(false);
-            
+
         }
     }
 
@@ -133,7 +131,7 @@ public class UIController : MonoBehaviour
         simulator.OnPaused();
     }
 
-    private void ResetGame()
+    static public void ResetGame()
     {
         trailLengthInput.text = 100.ToString();
         pausedText.text = "Start";
