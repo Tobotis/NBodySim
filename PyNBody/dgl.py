@@ -15,7 +15,7 @@ X1 = np.array([0.0, 0.0, 0.0])
 X1_D = np.array([0.0, 0.1, 0.0])
 # Ausgangsbedingungen für Körper 2
 M2 = 1
-X2 = np.array([1, -1, 0.0])
+X2 = np.array([1, -1.5, 0.0])
 X2_D = np.array([0.0, 0.0, -1])
 # Ausgangsbedingungen für Körper 3
 M3 = 1
